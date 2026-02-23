@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRAGON HACK - تحميل الملف</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    :root {
+        --primary: #8B5CF6;
+        --primary-light: #A78BFA;
+        --primary-dark: #7C3AED;
+        --secondary: #06B6D4;
+        --secondary-light: #22D3EE;
+        --accent: #F59E0B;
+        --accent-light: #FBBF24;
+        --dark: #1E293B;
+        --darker: #0F172A;
+        --light: #F8FAFC;
+        --gray: #94A3B8;
+        --success: #10B981;
+        --border-radius: 16px;
+        --transition: all 0.3s ease;
+        --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* تمكين التمرير السلس */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Cairo', sans-serif;
+        background: linear-gradient(135deg, var(--darker), #1E1B4B, #1E293B);
+        background-size: cover;
+        background-attachment: fixed;
+        color: var(--light);
+        text-align: center;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+        padding-bottom: 40px;
+        /* تحسين الأداء */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .container { 
+        padding: 20px; 
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .header {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(15, 23, 42, 0.5);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        max-width: 500px;
+        margin: 30px auto 40px;
+    }
+    
+    .developer-title {
+        font-size: 28px;
+        color: var(--primary-light);
+        margin-bottom: 15px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        position: relative;
+    }
+    
+    .developer-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 3px;
+    }
+    
+    .dev-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 14px 30px;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        letter-spacing: 0.5px;
+    }
+    
+    .title {
+        font-size: 42px;
+        color: var(--secondary-light);
+        margin: 25px 0 30px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        position: relative;
+    }
+    
+    .title::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 140px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--secondary), transparent);
+        border-radius: 2px;
+    }
+    
+    .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        height: 0;
+        padding-bottom: 56.25%;
+        margin: 25px auto;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid rgba(139, 92, 246, 0.2);
+        background: #000; /* خلفية سوداء أثناء تحميل الفيديو */
+    }
+    
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 18px;
+    }
+    
+    .steps-container {
+        max-width: 650px;
+        margin: 40px auto;
+        padding: 30px;
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .steps-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        border-radius: 4px 4px 0 0;
+    }
+    
+    .steps-title {
+        font-size: 24px;
+        color: var(--primary-light);
+        margin-bottom: 25px;
+        font-weight: 700;
+        position: relative;
+    }
+    
+    .steps-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: var(--primary-light);
+        border-radius: 2px;
+    }
+    
+    .steps {
+        text-align: right;
+    }
+    
+    .step {
+        padding: 14px 20px;
+        font-size: 18px;
+        line-height: 1.6;
+        opacity: 0.7;
+        border-radius: 12px;
+        margin: 8px 0;
+        position: relative;
+        padding-left: 50px;
+    }
+    
+    .step::before {
+        content: attr(data-number);
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background: rgba(139, 92, 246, 0.1);
+        border: 2px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    .active-step {
+        opacity: 1;
+        color: var(--secondary-light);
+        background: rgba(6, 182, 212, 0.15);
+        border: 1px solid rgba(6, 182, 212, 0.3);
+        font-weight: 700;
+        border-right: 4px solid var(--secondary);
+    }
+    
+    .active-step::before {
+        background: var(--secondary);
+        color: white;
+    }
+    
+    .btn {
+        display: none;
+        width: 90%;
+        max-width: 360px;
+        margin: 18px auto;
+        padding: 18px 25px;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        letter-spacing: 0.5px;
+    }
+    
+    .btn i { 
+        margin-left: 12px;
+        font-size: 16px;
+    }
+    
+    .btn-subscribe { 
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    }
+    
+    .btn-like { 
+        background: linear-gradient(135deg, var(--secondary), #0891B2);
+    }
+    
+    .btn-comment { 
+        background: linear-gradient(135deg, #EC4899, #DB2777);
+    }
+    
+    .btn-telegram { 
+        background: linear-gradient(135deg, #3B82F6, #2563EB);
+    }
+    
+    .btn-download {
+        background: linear-gradient(135deg, var(--accent), #D97706);
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    
+    .countdown-container {
+        display: none;
+        margin: 30px auto;
+        padding: 20px;
+        max-width: 400px;
+        background: rgba(245, 158, 11, 0.15);
+        border-radius: 50px;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    
+    .countdown {
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--accent-light);
+        margin: 0;
+    }
+    
+    .footer {
+        margin-top: 50px;
+        padding: 30px 20px;
+        color: var(--gray);
+        font-size: 15px;
+        position: relative;
+    }
+    
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+    
+    .footer-content {
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    
+    .social-icons {
+        margin: 25px 0;
+        display: flex;
+        justify-content: center;
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+    
+    .social-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: rgba(15, 23, 42, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        text-decoration: none;
+        transition: none; /* سنضيف تأثير hover بسيط بدون حركة */
+    }
+    
+    .social-icon:hover {
+        background: rgba(139, 92, 246, 0.3);
+        border-color: var(--primary);
+    }
+    
+    .badge {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--secondary), #0891B2);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        margin: 10px 5px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .highlight {
+        color: var(--accent-light);
+        font-weight: 700;
+    }
+    
+    /* تأثير الظهور التدريجي للعناصر */
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
+    }
+    
+    .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    @media (max-width: 768px) {
+        .title {
+            font-size: 36px;
+        }
+        
+        .video-container {
+            margin: 20px auto;
+        }
+        
+        .steps-container {
+            margin: 30px auto;
+            padding: 25px 20px;
+        }
+        
+        .step {
+            font-size: 17px;
+            padding: 12px 18px;
+        }
+        
+        .btn {
+            max-width: 90%;
+            margin: 15px auto;
+            padding: 16px;
+            font-size: 17px;
+        }
+        
+        .countdown-container {
+            padding: 18px;
+            margin: 25px auto;
+        }
+        
+        .countdown {
+            font-size: 20px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .title {
+            font-size: 32px;
+        }
+        
+        .developer-title {
+            font-size: 26px;
+        }
+        
+        .dev-btn {
+            font-size: 17px;
+            padding: 12px 25px;
+        }
+        
+        .steps-title {
+            font-size: 22px;
+        }
+        
+        .step {
+            font-size: 16px;
+            padding: 10px 16px;
+        }
+        
+        .btn {
+            font-size: 16px;
+            padding: 15px;
+        }
+        
+        .footer {
+            padding: 25px 15px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header fade-in-section">
+        <div class="developer-title">DRAGON HACK</div>
+        <a href="https://t.me/karem1041" target="_blank" class="dev-btn">
+            <i class="fab fa-telegram"></i> تواصل مع المطور
+        </a>
+    </div>
+
+    <h1 class="title fade-in-section">اقوى ملف اسكنات ناار 🔥</h1>
+    
+    <div class="video-container fade-in-section">
+        <iframe src="https://www.youtube.com/embed/XpM2N68qie8" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+    </div>
+
+    <div class="steps-container fade-in-section">
+        <h3 class="steps-title">خطوات التحميل</h3>
+        <div class="steps">
+            <div class="step active-step" id="step1" data-number="1">الاشتراك في قناة اليوتيوب</div>
+            <div class="step" id="step2" data-number="2">الإعجاب بالفيديو</div>
+            <div class="step" id="step3" data-number="3">إضافة تعليق</div>
+            <div class="step" id="step4" data-number="4">الانضمام لقناة التليجرام</div>
+            <div class="step" id="step5" data-number="5">تحميل الملف</div>
+        </div>
+    </div>
+
+    <!-- زر الاشتراك -->
+    <a href="https://youtube.com/@karemmohamed-o5m?si=lh-MKsO4k3cyZQkm" target="_blank" class="fade-in-section">
+        <button id="btn1" class="btn btn-subscribe">
+            <i class="fab fa-youtube"></i> اشترك الآن
+        </button>
+    </a>
+    
+    <!-- زر الإعجاب -->
+    <a href="https://youtu.be/dfAk4GkdhMc" target="_blank" class="fade-in-section">
+        <button id="btn2" class="btn btn-like">
+            <i class="fas fa-thumbs-up"></i> أعجبني
+        </button>
+    </a>
+    
+    <!-- زر التعليق -->
+    <a href="https://youtu.be/dfAk4GkdhMc" target="_blank" class="fade-in-section">
+        <button id="btn3" class="btn btn-comment">
+            <i class="fas fa-comment"></i> أضف تعليق
+        </button>
+    </a>
+    
+    <!-- زر الانضمام لتليجرام -->
+    <a href="https://t.me/+IYQcZ2T9v8Q3NjE6" target="_blank" class="fade-in-section">
+        <button id="btn4" class="btn btn-telegram">
+            <i class="fab fa-telegram"></i> انضم الآن
+        </button>
+    </a>
+
+    <!-- عداد التحميل -->
+    <div id="countdown-container" class="countdown-container fade-in-section">
+        <div id="countdown" class="countdown">سيظهر زر التحميل خلال <span id="timer">10</span> ثواني...</div>
+    </div>
+
+    <!-- زر التحميل النهائي -->
+    <a href="https://fobramg.com/a/22376" target="_blank" class="fade-in-section">
+        <button id="btn5" class="btn btn-download">
+            <i class="fas fa-download"></i> تحميل الملف
+        </button>
+    </a>
+
+    <!-- أيقونات التواصل -->
+    <div class="social-icons fade-in-section">
+        <a href="https://t.me/karem1041" target="_blank" class="social-icon">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://t.me/karem1041" target="_blank" class="social-icon">
+            <i class="fab fa-telegram"></i>
+        </a>
+    </div>
+
+    <div class="footer fade-in-section">
+        <div class="footer-content">
+            جميع الحقوق محفوظة © KAREM~كارم<br>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        'use strict';
+
+        // إظهار الزر الأول
+        document.getElementById("btn1").style.display = "block";
+
+        // ==== تحسين الأداء: استخدام Intersection Observer لظهور العناصر ====
+        const fadeElements = document.querySelectorAll('.fade-in-section');
+        
+        if (fadeElements.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // يمكن إيقاف المراقبة بعد الظهور لتحسين الأداء
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+        }
+
+        // ==== وظيفة التبديل بين الأزرار والخطوات ====
+        function showNext(currentBtn, nextBtn, currentStep, nextStep) {
+            const btnCurrent = document.getElementById(currentBtn);
+            const btnNext = document.getElementById(nextBtn);
+            const stepCurrent = document.getElementById(currentStep);
+            const stepNext = document.getElementById(nextStep);
+            
+            if (btnCurrent) btnCurrent.style.display = "none";
+            if (btnNext) btnNext.style.display = "block";
+            
+            if (stepCurrent) stepCurrent.classList.remove("active-step");
+            if (stepNext) stepNext.classList.add("active-step");
+        }
+
+        // ربط الأحداث مع استخدام passive لتحسين التمرير
+        document.getElementById("btn1").addEventListener("click", function(e) {
+            showNext("btn1", "btn2", "step1", "step2");
+        });
+
+        document.getElementById("btn2").addEventListener("click", function(e) {
+            showNext("btn2", "btn3", "step2", "step3");
+        });
+
+        document.getElementById("btn3").addEventListener("click", function(e) {
+            showNext("btn3", "btn4", "step3", "step4");
+        });
+
+        document.getElementById("btn4").addEventListener("click", function(e) {
+            // إخفاء الزر الرابع وإظهار العداد
+            document.getElementById("btn4").style.display = "none";
+            document.getElementById("step4").classList.remove("active-step");
+            document.getElementById("step5").classList.add("active-step");
+            
+            const countdownContainer = document.getElementById("countdown-container");
+            countdownContainer.style.display = "block";
+            
+            let timeLeft = 10;
+            const timerElement = document.getElementById("timer");
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    countdownContainer.style.display = "none";
+                    document.getElementById("btn5").style.display = "block";
+                }
+            }, 1000);
+        });
+
+        // إضافة روابط الأيقونات الاجتماعية (إذا لم تكن صحيحة)
+        // لاحظ أن أيقونة اليوتيوب كانت تشير إلى تليجرام، قمت بتصحيحها:
+        const socialIcons = document.querySelectorAll('.social-icon');
+        if (socialIcons.length >= 2) {
+            socialIcons[0].href = 'https://youtube.com/@karemmohamed-o5m?si=lh-MKsO4k3cyZQkm'; // يوتيوب
+            socialIcons[1].href = 'https://t.me/karem1041'; // تليجرام
+        }
+
+        // إزالة أي تأثيرات JavaScript غير ضرورية (مثل القلوب)
+        // يمكن إضافة أي كود إضافي هنا حسب الحاجة
+
+    })();
+</script>
+</body>
+</html>
